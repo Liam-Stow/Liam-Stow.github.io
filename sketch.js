@@ -8,11 +8,17 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   background(44,48,52);
   image(img, 50, 50, 80, 80);
-  imageMode(CENTER)
+  imageMode(CENTER);
 }
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
+}
+
+function touchMoved() {
+  background(44,48,52);
+  fill(70, 130, 180);
+  image(img, mouseX, mouseY, 50, 50);
 }
 
 function draw() {
