@@ -19,6 +19,7 @@ function touchMoved() {
   background(44,48,52);
   fill(70, 130, 180);
   image(img, mouseX, mouseY, 50, 50);
+  return false;
 }
 
 function draw() {
