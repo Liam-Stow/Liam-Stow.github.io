@@ -98,8 +98,6 @@ class Ladder extends TexturedGameObject {
     }
 
     isJamesTouching() {
-        console.log(dist(this.jamesRef.x,this.jamesRef.y, this.x, this.y))
-        console.log(dist(this.jamesRef.x,this.jamesRef.y, this.x, this.y)< this.holdSteadyDist)
         return dist(this.jamesRef.x,this.jamesRef.y, this.x, this.y) < this.holdSteadyDist;
     }
 

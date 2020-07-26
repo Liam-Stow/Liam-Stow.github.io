@@ -6,7 +6,7 @@ let lost = false;
 let loseFont;
 
 function preload() {
-    loseFont = loadFont('fonts/8-bit-wonder.ttf');
+    loseFont = loadFont('fonts/8-bit-wonder.TTF');
     bgImage = loadImage('img/bg.jpg');
     angleMode(DEGREES);
     restart();
