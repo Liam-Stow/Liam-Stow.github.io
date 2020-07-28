@@ -5,7 +5,7 @@ class Ladder extends TexturedGameObject {
         const WIDTH = 40;
         const HEIGHT = 158;
         const MIN_Y = windowWidth<windowHeight ? LADDER_ZONE_PADDING : windowHeight/2; // Use top of screen if on phone
-        const LADDER_PEOPLE_IMAGES = ['Cecil.png', 'millz.png', 'darcy.png', 'isaac.png', 'noah.png', 'connor.png'];
+        const LADDER_PEOPLE_IMAGES = ['Cecil.png', 'millz.png', 'darcy.png', 'isaac.png', 'noah.png', 'connor.png', 'lachie.png'];
         const X = random(LADDER_ZONE_PADDING, windowWidth-LADDER_ZONE_PADDING);
 
         super('img/ladder.png', X, START_Y, WIDTH, HEIGHT);
