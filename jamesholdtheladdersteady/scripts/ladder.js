@@ -26,7 +26,7 @@ class Ladder extends TexturedGameObject {
         this.maxWobbleAngle = 10;
         this.anchorPoint = createVector(this.width/2, this.height);
 
-        this.clicked = true;
+        this.clicked = (windowWidth>windowHeight); // Phone users must click on each ladder, wider screens can just run past ladders
         this.holdSteadyDist = 50;
 
         const PERSON_SIZE = 60;
