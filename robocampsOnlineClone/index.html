@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="description" content="Webpage description goes here" />
+    <meta charset="utf-8">
+    <title>Camp Amazon #4</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="FRC3132" content="">
+    <link rel="stylesheet" href="styles.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="levelLoader.js"></script>
+</head>
+
+<body>
+    <div style="display:flex; justify-content: space-between;">
+        <div style="flex-direction: column;">
+            <H1>RoboCamp Editor</H1>
+            <p>To load each level click on button then paste (ctrl + v) the editor. <br />
+                You should only ever need to edit the code inside the setup() function. <br />
+                unfortunately is no way to your code so you open new tab when starting the next level. </p>
+        </div>
+        <div class="flexRight">
+            <button onclick="loadLevel(1)">Level 1</button>
+            <button onclick="loadLevel(2)">Level 2</button>
+            <button onclick="loadLevel(3)">Level 3</button>
+            <button onclick="loadLevel(4)">Level 4</button>
+            <button onclick="loadLevel(5)">Level 5</button>
+            <button onclick="loadLevel(6)">Level 6</button>
+            <button onclick="loadLevel(7)">Level 7</button>
+            <button onclick="loadLevel(8)">Level 8</button>
+            <button onclick="loadLevel(9)">Level 9</button>
+        </div>
+    </div>
+
+    <iframe id="p5.js web editor embed" class="editor" title="p5.js web editor embed" src="https://editor.p5js.org/">
+    </iframe>
+
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+.flexRight {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+    align-self: center;
+}
+
+button {
+    padding: 30px;
+    background-color: #60915e;
+}
+
+.buttonCool {
+    padding: 15px 40px 15px 40px;
+    background-color: orange;
+    /* border-color: orangered; */
+    box-shadow: 2px 2px black;
+    border-radius: 10px;
+    margin-right: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px;
+    font-weight: bolder;
+    color: white;
+}
+
+.buttonCool:focus {
+    box-shadow: 0px 0px;
+    background-color: orangered;
+}
+
+
+.editor {
+    overflow: hidden;
+    margin: 0px;
+    width: 99%;
+    height: 84%;
+    position: absolute;
+}
