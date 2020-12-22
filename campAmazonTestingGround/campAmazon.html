@@ -16,11 +16,27 @@
         #editor {
             position: absolute;
             top: 0;
-            right: 0;
             bottom: 0;
             left: 0;
+            right: 0;
             margin: 0;
             width: 50%;
+            z-index: 0;
+        }
+
+        #editorContainer {
+            margin: 0;
+            width: 50%;
+        }
+
+        .canvas {
+            width: 600px;
+            height: 100%;
+        }
+
+        .canvasContainer {
+            margin: 0;
+            z-index: 0;
         }
     </style>
 
@@ -29,15 +45,22 @@
 
 <body>
 
-    <pre id="editor"></pre>
+    <div style="display: flex;">
 
-    <script>
-        var editor = ace.edit("editor");
-        editor.setTheme("ace/theme/monokai");
-        editor.session.setMode("ace/mode/javascript");
-    </script>
+        <div id="editorContainer">
+            <pre id="editor"></pre>
 
-    <iframe id="canvas" src="canvas.html"></iframe>
+            <script>
+                var editor = ace.edit("editor");
+                editor.setTheme("ace/theme/monokai");
+                editor.session.setMode("ace/mode/javascript");
+            </script>
+        </div>
+
+        <div id="canvasContainer">
+            <iframe id="canvas" src="canvas.html"></iframe>
+        </div>
+    </div>
 
 </body>
 
