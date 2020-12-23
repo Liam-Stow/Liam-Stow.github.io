@@ -18,7 +18,7 @@ class RobotCanvas extends React.Component {
 
     draw = (p5) => {
         p5.background("rgb(200,200,200)")
-        eval(this.props.userCode())
+        eval(this.props.userCode)
     }
 
     render() {
@@ -33,7 +33,8 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isEditorReady: false
+            isEditorReady: false,
+            activeDraw: ""
         }
     }
     valueGetter = React.createRef();
@@ -55,10 +56,17 @@ class App extends React.Component {
         }
     }
 
+    runCode = () => {
+        this.setState({activeDraw: this.getCode()})
+    }
+
     render() {
         return (
             <React.Fragment >
-                <button onClick={this.handleShowValue} disabled={!this.state.isEditorReady}>Show</button>
+                <div className="flexbox-container">
+                    <button onClick={this.handleShowValue} disabled={!this.state.isEditorReady}>Show</button>
+                    <button onClick={this.runCode} disabled={!this.state.isEditorReady}>Run</button>
+                </div>
                 <div className="flexbox-container">
                     <Editor
                         className="CodeEditor"
@@ -67,7 +75,7 @@ class App extends React.Component {
                         theme="dark"
                         language="javascript"
                         editorDidMount={this.handleEditorDidMount} />
-                    <RobotCanvas userCode={this.getCode}/>
+                    <RobotCanvas userCode={this.state.activeDraw}/>
                 </div>
             </React.Fragment>
         );
