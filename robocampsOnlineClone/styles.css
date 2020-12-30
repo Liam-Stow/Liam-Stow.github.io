@@ -7,10 +7,17 @@ p {
     min-width: 400px;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 180px;
 }
 
 .buttonContainer {
@@ -23,15 +30,8 @@ p {
 }
 
 button {
-    display: block;
-    padding: 30px;
-    background-color: rgb(48, 190, 96);
-}
-
-button {
     padding: 15px 15px 15px 15px;
     background-color: orange;
-    /* border-color: orangered; */
     box-shadow: 2px 2px black;
     border-radius: 10px;
     margin-right: 5px;
@@ -47,10 +47,10 @@ button:focus {
     background-color: orangered;
 }
 
-
 .editor {
     overflow: hidden;
     margin: 0px;
     width: 100%;
-    height: 800px;
+    height: calc(100% - 180px); /* 180px is height of header */
+    border: none;
 }
