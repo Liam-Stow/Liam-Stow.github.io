@@ -1174,7 +1174,199 @@ const levels = {
     "\n" +
     "}\n", 
 
-    10: "const MAX_PATH_LENGTH = 10000;\n" +
+    10: 
+    "const MAX_PATH_LENGTH = 10000;\n" +
+    "const TRAIL_LENGTH = 4000;\n" +
+    "const COLOUR_SENSOR_DISTANCE = 23;\n" +
+    "const IMAGE_URL = 'https://i.imgur.com/3mBQ7z2.png';\n" +
+    "const LVL4_MAP = 'https://i.imgur.com/FbyLemC.png';\n" +
+    "\n" +
+    "function Robot(x, y, a, s) {\n" +
+    "this.x = x;\n" +
+    "this.y = y;\n" +
+    "this.a = a;\n" +
+    "this.size = s;\n" +
+    "\n" +
+    "drawMap();\n" +
+    "this.history = [];\n" +
+    "this.path = [];\n" +
+    "this.pathDir = [];\n" +
+    "\n" +
+    "this.hasBattery = function hasBattery() {\n" +
+    "    return this.path.length < MAX_PATH_LENGTH;\n" +
+    "}\n" +
+    "\n" +
+    "this.detectColour = function detectColour(c) {\n" +
+    "    const at = get(x + cos(a) * COLOUR_SENSOR_DISTANCE, y + sin(a) * COLOUR_SENSOR_DISTANCE);\n" +
+    "    //print(at, c.toString());\n" +
+    "    return at[0] == red(c) && at[1] == green(c) && at[2] == blue(c) && at[3] == alpha(c);\n" +
+    "}\n" +
+    "\n" +
+    "this.move = function move(dist, turnRate) {\n" +
+    "    for (var i = 1; i <= abs(dist); i++) {\n" +
+    "    a += turnRate/100;\n" +
+    "    x = x + cos(a) * 2 * Math.sign(dist);\n" +
+    "    y = y + sin(a) * 2 * Math.sign(dist);\n" +
+    "    this.path.push(createVector(x, y));\n" +
+    "    this.pathDir.push(Math.sign(dist));\n" +
+    "    if (x >= width || x <= 0 || y >= height || y <= 0 || this.path.length > MAX_PATH_LENGTH) {\n" +
+    "        return false;\n" +
+    "    }\n" +
+    "    }\n" +
+    "    return true;\n" +
+    "}\n" +
+    "\n" +
+    "this.render = function render(time) {\n" +
+    "    if (time < this.path.length) {\n" +
+    "    //robot\n" +
+    "    var p = this.path[time];\n" +
+    "    noStroke();\n" +
+    "    fill(255, 0, 0, 255);\n" +
+    "    ellipse(p.x, p.y, this.size/3, this.size/3);\n" +
+    "\n" +
+    "    //trail\n" +
+    "    for (var i = 0; i < this.history.length; i = i + 2) {\n" +
+    "        var pos = this.history[i];\n" +
+    "        fill(255, 0, 0, 100);\n" +
+    "        ellipse(pos.x, pos.y, 8, 8);\n" +
+    "    }\n" +
+    "\n" +
+    "    this.history.push(createVector(p.x, p.y));\n" +
+    "\n" +
+    "    //remove old history\n" +
+    "    if (this.history.length > TRAIL_LENGTH) {\n" +
+    "        this.history.shift();\n" +
+    "    }\n" +
+    "    \n" +
+    "    translate(p.x, p.y);\n" +
+    "    var q = this.history[this.history.length-2];\n" +
+    "    rotate(p.sub(q).mult(this.pathDir[time]).heading());\n" +
+    "    imageMode(CENTER);\n" +
+    "    image(img, 0, 0, this.size, this.size);\n" +
+    "    }\n" +
+    "}\n" +
+    "this.move(2,0); // make sure the robot is drawn\n" +
+    "}\n" +
+    "\n" +
+    "function preload() {\n" +
+    "img = loadImage(IMAGE_URL);\n" +
+    "map_lvl4 = loadImage(LVL4_MAP);\n" +
+    "}\n" +
+    "\n" +
+    "let t = 0;\n" +
+    "function draw() {\n" +
+    "if (t < robot.path.length) {\n" +
+    "    drawMap();\n" +
+    "    robot.render(t);\n" +
+    "    t += 1;\n" +
+    "    redraw();\n" +
+    "}\n" +
+    "}\n" +
+    "function drawMap() {\n" +
+    "createCanvas(800, 600);\n" +
+    "}\n" +
+    "\n" +
+    "function setup(){\n" +
+    "    robot = new Robot(100, 100, 0, 50);\n" +
+    "}\n",
+
+    11: 
+    "const MAX_PATH_LENGTH = 10000;\n" +
+    "const TRAIL_LENGTH = 4000;\n" +
+    "const COLOUR_SENSOR_DISTANCE = 23;\n" +
+    "const IMAGE_URL = 'https://i.imgur.com/3mBQ7z2.png';\n" +
+    "const LVL4_MAP = 'https://i.imgur.com/FbyLemC.png';\n" +
+    "\n" +
+    "function Robot(x, y, a, s) {\n" +
+    "this.x = x;\n" +
+    "this.y = y;\n" +
+    "this.a = a;\n" +
+    "this.size = s;\n" +
+    "\n" +
+    "drawMap();\n" +
+    "this.history = [];\n" +
+    "this.path = [];\n" +
+    "this.pathDir = [];\n" +
+    "\n" +
+    "this.hasBattery = function hasBattery() {\n" +
+    "    return this.path.length < MAX_PATH_LENGTH;\n" +
+    "}\n" +
+    "\n" +
+    "this.detectColour = function detectColour(c) {\n" +
+    "    const at = get(x + cos(a) * COLOUR_SENSOR_DISTANCE, y + sin(a) * COLOUR_SENSOR_DISTANCE);\n" +
+    "    //print(at, c.toString());\n" +
+    "    return at[0] == red(c) && at[1] == green(c) && at[2] == blue(c) && at[3] == alpha(c);\n" +
+    "}\n" +
+    "\n" +
+    "this.move = function move(dist, turnRate) {\n" +
+    "    for (var i = 1; i <= abs(dist); i++) {\n" +
+    "    a += turnRate/100;\n" +
+    "    x = x + cos(a) * 2 * Math.sign(dist);\n" +
+    "    y = y + sin(a) * 2 * Math.sign(dist);\n" +
+    "    this.path.push(createVector(x, y));\n" +
+    "    this.pathDir.push(Math.sign(dist));\n" +
+    "    if (x >= width || x <= 0 || y >= height || y <= 0 || this.path.length > MAX_PATH_LENGTH) {\n" +
+    "        return false;\n" +
+    "    }\n" +
+    "    }\n" +
+    "    return true;\n" +
+    "}\n" +
+    "\n" +
+    "this.render = function render(time) {\n" +
+    "    if (time < this.path.length) {\n" +
+    "    //robot\n" +
+    "    var p = this.path[time];\n" +
+    "    noStroke();\n" +
+    "    fill(255, 0, 0, 255);\n" +
+    "    ellipse(p.x, p.y, this.size/3, this.size/3);\n" +
+    "\n" +
+    "    //trail\n" +
+    "    for (var i = 0; i < this.history.length; i = i + 2) {\n" +
+    "        var pos = this.history[i];\n" +
+    "        fill(255, 0, 0, 100);\n" +
+    "        ellipse(pos.x, pos.y, 8, 8);\n" +
+    "    }\n" +
+    "\n" +
+    "    this.history.push(createVector(p.x, p.y));\n" +
+    "\n" +
+    "    //remove old history\n" +
+    "    if (this.history.length > TRAIL_LENGTH) {\n" +
+    "        this.history.shift();\n" +
+    "    }\n" +
+    "    \n" +
+    "    translate(p.x, p.y);\n" +
+    "    var q = this.history[this.history.length-2];\n" +
+    "    rotate(p.sub(q).mult(this.pathDir[time]).heading());\n" +
+    "    imageMode(CENTER);\n" +
+    "    image(img, 0, 0, this.size, this.size);\n" +
+    "    }\n" +
+    "}\n" +
+    "this.move(2,0); // make sure the robot is drawn\n" +
+    "}\n" +
+    "\n" +
+    "function preload() {\n" +
+    "img = loadImage(IMAGE_URL);\n" +
+    "map_lvl4 = loadImage(LVL4_MAP);\n" +
+    "}\n" +
+    "\n" +
+    "let t = 0;\n" +
+    "function draw() {\n" +
+    "if (t < robot.path.length) {\n" +
+    "    drawMap();\n" +
+    "    robot.render(t);\n" +
+    "    t += 1;\n" +
+    "    redraw();\n" +
+    "}\n" +
+    "}\n" +
+    "function drawMap() {\n" +
+    "   createCanvas(800, 600);\n" +
+    "}\n" +
+    "\n" +
+    "function setup(){\n" +
+    "    robot = new Robot(100,100, 0, 50);\n" +
+    "}\n",
+
+    12: "const MAX_PATH_LENGTH = 10000;\n" +
     "const TRAIL_LENGTH = 4000;\n" +
     "const COLOUR_SENSOR_DISTANCE = 23;\n" +
     "const IMAGE_URL = 'https://i.imgur.com/3mBQ7z2.png';\n" +
@@ -1324,7 +1516,7 @@ const levels = {
     "    }\n" +
     "}\n",
 
-    10.5: "const MAX_PATH_LENGTH = 10000;\n" +
+    13: "const MAX_PATH_LENGTH = 10000;\n" +
     "const TRAIL_LENGTH = 4000;\n" +
     "const COLOUR_SENSOR_DISTANCE = 23;\n" +
     "const IMAGE_URL = 'https://i.imgur.com/3mBQ7z2.png';\n" +
