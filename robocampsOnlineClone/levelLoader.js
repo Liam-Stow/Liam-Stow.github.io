@@ -374,19 +374,19 @@ const levels = {
       "}\n",
 
    10: "function drawMap() {\n" +
-      "createCanvas(800, 600);\n" +
+      "  createCanvas(800, 600);\n" +
       "}\n" +
       "\n" +
       "function setup(){\n" +
-      "    robot = new Robot(100, 100, 0, 50);\n" +
+      "  robot = new Robot(100, 100, 0, 50);\n" +
       "}\n",
 
    11: "function drawMap() {\n" +
-      "   createCanvas(800, 600);\n" +
+      "  createCanvas(800, 600);\n" +
       "}\n" +
       "\n" +
       "function setup(){\n" +
-      "    robot = new Robot(100,100, 0, 50);\n" +
+      "  robot = new Robot(100,100, 0, 50);\n" +
       "}\n",
 
    12: "function drawMap() {\n" +
@@ -519,15 +519,15 @@ const baseCode = "const MAX_PATH_LENGTH = 10000;\n" +
    "const TRAIL_LENGTH = 4000;\n" +
    "const COLOUR_SENSOR_DISTANCE = 23;\n" +
    "const IMAGE_URL = 'https://i.imgur.com/3mBQ7z2.png';\n" +
-   "const LVL4_MAP = 'https://i.imgur.com/FbyLemC.png'\n;" +
-   "var map_choice = ''\n" +
+   "const LVL4_MAP = 'https://i.imgur.com/FbyLemC.png';\n" +
+   "var map_choice = '';\n" +
    "\n" +
    "function Robot(x, y, a, s) {\n" +
    "  this.x = x;\n" +
    "  this.y = y;\n" +
    "  this.a = a;\n" +
    "  this.size = s;\n" +
-   "  this.battryUse = 0;"
+   "  this.batteryUse = 0;\n" +
    "  \n" +
    "  drawMap();\n" +
    "  this.history = [];\n" +
