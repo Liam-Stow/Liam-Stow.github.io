@@ -1440,7 +1440,6 @@ const levels = {
       "\n" +
       "function preload() {\n" +
       "  img = loadImage(IMAGE_URL);\n" +
-      "  map_lvl4 = loadImage(LVL4_MAP);\n" +
       "  map_choice = random(['red', 'purple'])\n" +
       "}\n" +
       "\n" +
@@ -1570,7 +1569,6 @@ const levels = {
       "\n" +
       "function preload() {\n" +
       "  img = loadImage(IMAGE_URL);\n" +
-      "  map_lvl4 = loadImage(LVL4_MAP);\n" +
       "  map_choice = random(['a', 'b', 'c'])\n" +
       "}\n" +
       "\n" +
